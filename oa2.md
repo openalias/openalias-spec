@@ -82,8 +82,6 @@ One of `asset_ticker` or `asset_network` is required. Both are recommended, even
 
 This is a major improvement in OA. Instead of simply specifying `usdt` as the prefix, recordholders can specify the exact network that they wish to receive USDT on, eg: `usdt:eth`.
 
-***Question: should we allow re-use of the same integer multiple times to signal to the sender an indifference between receive types?***
-
 #### `address_type`
 
 This is an optional (but recommended) identifier for the address type. Example address types might be `p2tr`, `p2wpkh`, `p2sh`, `p2pkh`, `bip352` (silent payments address), `bip47` (PayNym).
@@ -112,6 +110,8 @@ For the four records above:
 * If the sender is providing USDT (on any network), then a `usdt:poly` record should be fetched from `_openalias-payment`.
 * If the sender is providing USDC on Ethereum, then a `:eth` record should be fetched from `_openalias-payment`.
 * If the sender is providing DAI on Polygon, then a `:poly` record should be fetched from `_openalias-payment`.
+
+***Question: should we allow re-use of the same integer multiple times to signal to the sender an indifference between receive types?***
 
 ## OA2 Lists
 

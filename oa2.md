@@ -30,7 +30,7 @@ OA1 and OA2 do not need to be compatible with every other alias standard, but we
 
 OpenAlias v2 introduces new OpenAlias record types.
 
-### `_openalias-metadata `
+### `_openalias-metadata`
 
 `_openalias-metadata` contains various items that are useful across different record types. For example, you can specify a name, image link, social profile links, social profile usernames, or other information.
 
@@ -39,7 +39,7 @@ Example name and image for `donate@openalias.org`:
 * TXT name: `_openalias-metadata.donate`
 * TXT content: `oa2 name=OpenAlias Project; image=https://openalias.org/image.png`
 
-#### `_openalias-metadata ` Key-Value Pairs
+#### `_openalias-metadata` Key-Value Pairs
 
 * name
 * description
@@ -62,11 +62,17 @@ Wallet developers MUST prohibit image lookups on another domain or subdomain.
 
 `_openalias-payment` is the core TXT record name for communicating payment information.
 
-The TXT record name begins with `_openalias-payment`. Records placed under that name will act as root records. Subdomain records are possible by affixing that subdomain after `_openalias-payment.`. For `donate.openalias.org`, the subdomain would be `_openalias-payment.donate`.
+The TXT record name begins with `_openalias-payment`. Records placed under that name will act as root records. Subdomain records are possible by affixing that subdomain after `_openalias-payment.`. For `example.openalias.org`, the subdomain would be `_openalias-payment.example`.
 
 The TXT content is:
 
+> oa2 [asset_component] address=[address_component];
+
+Records often appear in these two ways:
+
 > oa2 [asset_ticker]:[asset_network] address=[address_type]:[address];
+
+> oa2 [asset_network] address=[address];
 
 #### `_openalias-payment` Key-Value Pairs
 
@@ -76,42 +82,48 @@ The TXT content is:
 * address_signature
 * checksum
 
-#### `asset_ticker` and `asset_network`
+#### `asset_component`
 
-One of `asset_ticker` or `asset_network` is required. Both are recommended, even for networks that do not support additional tokens.
+The `asset_component` is either an `asset_ticker` and `asset_network`, or an `asset_network`. A colon separates the `asset_ticker` and `asset_network`.
+
+`asset_network` is required. `asset_ticker` is recommended.
 
 This is a major improvement in OA. Instead of simply specifying `usdt` as the prefix, recordholders can specify the exact network that they wish to receive USDT on, eg: `usdt:eth`.
 
-#### `address_type`
+#### `address_component`
 
-This is an optional (but recommended) identifier for the address type. Example address types might be `p2tr`, `p2wpkh`, `p2sh`, `p2pkh`, `bip352` (silent payments address), `bip47` (PayNym).
+The `address_component` includes the `address` prefixed by an optional `address_type`. A colon separates the `address_type` and `address`.
+
+The `address_type` is an optional (but recommended) identifier for the address type. Example address types might be `p2tr`, `p2wpkh`, `p2sh`, `p2pkh`, `bip352` (silent payments address), `bip47` (PayNym).
 
 ### `_openalias-routing`
 
-`_openalias-routing` is an advanced record type for communicating payment priority.
+`_openalias-routing` is an advanced record type for communicating payment priority. Routing records contain an `asset_ticker` (optional), `asset_network`, and `priority`.
 
 The TXT record name begins with `_openalias-routing`. Records placed under that name will act as root records. Subdomain records are possible by affixing that subdomain after `_openalias-routing.`. For `donate.openalias.org`, the subdomain would be `_openalias-routing.donate`.
 
-Priority is an optional integer. The lowest number is most preferred. If the priority is not provided, then the record will have a lower priority than other matching TXT records with a priority.
+Priority is a required integer. The lowest number is the highest priority. Each priority value MUST be unique.
 
-Priority is first conducted among exact matches of `asset_ticker`, and then `asset_network` only if there is no match for the `asset_ticker`. 
+Routing records are filtered out if they do not match the `asset_ticker` or the `asset_network`. The post-filter, remaining records are sorted by priority and selected in priority order.
 
-Example routing records for `donate@openalias.org`:
+Example routing records for `example@openalias.org`:
 
-* TXT names: `_openalias-routing.donate`
-* TXT1 content: `oa2 usdt:poly 20`
-* TXT2 content: `oa2 usdt:eth 30`
-* TXT3 content: `oa2 :eth 10`
-* TXT4 content: `oa2 :poly`
+* TXT names: `_openalias-routing.example`
+* TXT1 content: `oa2 usdt:poly 10`
+* TXT2 content: `oa2 usdt:eth 20`
+* TXT3 content: `oa2 eth 30`
+* TXT4 content: `oa2 poly 40`
 
 For the four records above:
 
-* If the sender can only provide USDT on Ethereum, then a `usdt:eth` record should be fetched from `_openalias-payment`.
-* If the sender is providing USDT (on any network), then a `usdt:poly` record should be fetched from `_openalias-payment`.
-* If the sender is providing USDC on Ethereum, then a `:eth` record should be fetched from `_openalias-payment`.
-* If the sender is providing DAI on Polygon, then a `:poly` record should be fetched from `_openalias-payment`.
+* If the sender can provide USDT on Ethereum but not Polygon, then the priority `_openalias-payment` record is `usdt:eth`.
+* If the sender is providing USDT (on any network), then the priority `_openalias-payment` record is `usdt:poly`.
+* If the sender is providing USDC on Ethereum, then the priority `_openalias-payment` record is `eth`.
+* If the sender is providing DAI on Polygon, then the priority `_openalias-payment` record is `poly`.
 
-***Question: should we allow re-use of the same integer multiple times to signal to the sender an indifference between receive types?***
+If several `_openalias-routing` records would fit a sending situation and have the same priority value, then throw an error. If a matching payment record is not located, then skip to the next routing record in priority order.
+
+The sender wallet, not the OpenAlias recordholder (recipient), should select which address type to prioritize sending to. Incompatible address types should be removed, and then the wallet can either let the sending user specify their preferred option among the remaining records or a sensible wallet default can be used.
 
 ## OA2 Lists
 
@@ -124,3 +136,60 @@ For OA2, OpenAlias should publish standardized lists of `asset_ticker` (for majo
 ***Question: is it necessary to standardize a list for `asset_ticker`, or are lists for `asset_network` and `address_type` sufficient?***
 
 ***Question: should OpenAlias maintain key-value pairs for `_openalias-metadata` records?***
+
+## Example
+
+We will use the example OpenAlias `example@openalias.org` with the following records:
+
+### _openalias-payment.example
+
+> oa2 btc:btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v
+> oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H
+> oa2 xmr address=888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H
+> oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
+> oa2 poly address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
+> oa2 base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
+> oa2 usdc:base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
+
+### _openalias-routing.example
+
+> oa2 usdc:base 10
+> oa2 eth 20
+> oa2 poly 30
+> oa2 base 40
+
+### _openalias-metadata.example
+
+> oa2 name=OpenAlias Project; image=https://example.openalias.org/image.png; signal=openalias.01;
+
+### Example Wallet Implementation
+
+1. The sender provides `example@openalias.org` as the string that they wish to send their funds to.
+
+2. Optional: fetch the `_openalias-metadata.example` record. If you have implemented any key-value pairs such as `image`, use them as desired.
+
+3. Determine based on sender context what assets and/or networks that should be reviewed. You should review ALL records that could be used in the context of the sending experience. Make lists with the applicable `asset_ticker` and `asset_network` values.
+
+4. Fetch all `_openalias-routing.example` records. For each, derive the `asset_ticker` and `asset_network` that they relate to. Discard all `_openalias-routing.example` records that do not match either the `asset_ticker` or `asset_network`.
+
+5. Sort the  `_openalias-routing.example` records by priority (lower number = higher priority). Skip this step if there are no `_openalias-routing.example` records.
+
+6. Fetch all `_openalias-payment.example` records. For each, derive the `asset_ticker` and `asset_network` that they relate to. Discard all `_openalias-payment.example` records that do not match either the `asset_ticker` or `asset_network`.
+
+7. Starting with highest priority routing record, search for a matching `_openalias-payment.example` record. If there are no matching records for that priority, then move to the next routing record. If there are no `_openalias-routing.example` records, then use the payment record.
+
+8. If there are several matching records, then select the priority record as follows:
+
+    1. First, filter out all `address_type` instances that are marked incompatible. For example, if a wallet cannot send to a bip352 address, then remove that record. Wallets should check compatibility with the address by seeing if the `address_type` string is supported, or through some other separate address validation logic. If only one record remains, then use that record.
+
+    2. If several records remain, have the user select which address they would like to send to, or implement local wallet logic to prioritize a preferred address type. For example, a wallet may wish to prioritize newer, more efficient, or more private address types by default.
+
+### Example Scenarios
+
+* If the user is sending USDT and the wallet supports the ETH and POLY networks, then the final used payment record should be `oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97`
+
+* If the user is sending BTC and the wallet supports sending to bip352 addresses, then the final used payment record should be `oa2 btc:btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v` or a user selection for the two `btc` records.
+
+* If the user is sending BTC and the wallet does NOt support sending to bip352 addresses, then the final used payment record should be `oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H`
+
+* If a user is sending USDC and the wallets supports the ETH and BASE networks, then the final used payment record should be `oa2 usdc:base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97`.

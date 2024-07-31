@@ -16,6 +16,7 @@
 * OA1 includes a version number, which means we can upgrade to a new OAv2 without breaking existing v1 records.
 * OA1 works for arbitrary assets, not just BTC or ETH.
 * OA1 is supported by major wallets Electrum, Cake Wallet, the official Monero wallets, Feather Wallet and more.
+* OA1 makes it simple for a user to "sanity check" the DNS record resolves to their intended address destination, since the visible address in the record is the same address that a user copies from their wallet software.
 
 ## Avoiding Conflicting Standards
 
@@ -25,6 +26,7 @@ OA1 and OA2 do not need to be compatible with every other alias standard, but we
 * Namecoin
 * Unstoppable Domains
 * https://github.com/bitcoin/bips/pull/1551
+* [Chain Agnostic Improvement Proposals](https://chainagnostic.org)
 
 ## Proposed OA2 Format
 
@@ -70,7 +72,7 @@ The TXT content is:
 
 Records often appear in these two ways:
 
-> oa2 [asset_ticker]:[asset_network] address=[address_type]:[address];
+> oa2 [asset_network]/[asset_type] address=[address_type]/[address];
 
 > oa2 [asset_network] address=[address];
 
@@ -84,40 +86,42 @@ Records often appear in these two ways:
 
 #### `asset_component`
 
-The `asset_component` is either an `asset_ticker` and `asset_network`, or an `asset_network`. A colon separates the `asset_ticker` and `asset_network`.
+The `asset_component` is either an `asset_network` and `asset_type`, or an `asset_network`. A forward slash `/` separates the `asset_network` and `asset_type`.
 
-`asset_network` is required. `asset_ticker` is recommended.
+`asset_network` is required. `asset_type` is recommended.
 
-This is a major improvement in OA. Instead of simply specifying `usdt` as the prefix, recordholders can specify the exact network that they wish to receive USDT on, eg: `usdt:eth`.
+This is a major improvement from OA1. Instead of simply specifying `usdt` as the prefix, recordholders can specify the exact network that they wish to receive USDT on, eg: `eth/usdt`.
+
+Either a nickname can be used for the `network_asset` or the full token ID. For example, the Uniswap token on Ethereum can be represented as either `eth/uni` or `eth/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984`.
 
 #### `address_component`
 
-The `address_component` includes the `address` prefixed by an optional `address_type`. A colon separates the `address_type` and `address`.
+The `address_component` includes the `address` prefixed by an optional `address_type`. A forward slash `/` separates the `address_type` and `address`.
 
 The `address_type` is an optional (but recommended) identifier for the address type. Example address types might be `p2tr`, `p2wpkh`, `p2sh`, `p2pkh`, `bip352` (silent payments address), `bip47` (PayNym).
 
 ### `_openalias-routing`
 
-`_openalias-routing` is an advanced record type for communicating payment priority. Routing records contain an `asset_ticker` (optional), `asset_network`, and `priority`.
+`_openalias-routing` is an advanced record type for communicating payment priority. Routing records contain an `asset_type` (optional), `asset_network`, and `priority`.
 
 The TXT record name begins with `_openalias-routing`. Records placed under that name will act as root records. Subdomain records are possible by affixing that subdomain after `_openalias-routing.`. For `donate.openalias.org`, the subdomain would be `_openalias-routing.donate`.
 
 Priority is a required integer. The lowest number is the highest priority. Each priority value MUST be unique.
 
-Routing records are filtered out if they do not match the `asset_ticker` or the `asset_network`. The post-filter, remaining records are sorted by priority and selected in priority order.
+Routing records are filtered out if they do not match the `asset_type` or the `asset_network`. The post-filter, remaining records are sorted by priority and selected in priority order.
 
 Example routing records for `example@openalias.org`:
 
 * TXT names: `_openalias-routing.example`
-* TXT1 content: `oa2 usdt:poly 10`
-* TXT2 content: `oa2 usdt:eth 20`
+* TXT1 content: `oa2 poly/usdt 10`
+* TXT2 content: `oa2 eth/usdt 20`
 * TXT3 content: `oa2 eth 30`
 * TXT4 content: `oa2 poly 40`
 
 For the four records above:
 
-* If the sender can provide USDT on Ethereum but not Polygon, then the priority `_openalias-payment` record is `usdt:eth`.
-* If the sender is providing USDT (on any network), then the priority `_openalias-payment` record is `usdt:poly`.
+* If the sender can provide USDT on Ethereum but not Polygon, then the priority `_openalias-payment` record is `eth/usdt`.
+* If the sender is providing USDT (on any network), then the priority `_openalias-payment` record is `poly/usdt`.
 * If the sender is providing USDC on Ethereum, then the priority `_openalias-payment` record is `eth`.
 * If the sender is providing DAI on Polygon, then the priority `_openalias-payment` record is `poly`.
 
@@ -129,11 +133,11 @@ The sender wallet, not the OpenAlias recordholder (recipient), should select whi
 
 For OA1, there was an expressed interest in maintaining an official list of prefixes, but this never materialized.
 
-For OA2, OpenAlias should publish standardized lists of `asset_ticker` (for major assets only), `asset_network`, and `address_type`.
+For OA2, OpenAlias should publish standardized lists of `asset_type` (for major assets only), `asset_network`, and `address_type`.
 
-***Question: what format should these lists be published in, for them to be most useful to ecosystem developers?***
+OA2 should maintain a list that maps `asset_network` and `asset_type` values to [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) and [CAIP-19](https://chainagnostic.org/CAIPs/caip-19), respectively.
 
-***Question: is it necessary to standardize a list for `asset_ticker`, or are lists for `asset_network` and `address_type` sufficient?***
+***Question: is there a need to map `asset_network` and `asset_type` to ecosystem lists outside of CAIP-2 and CAIP-19?***
 
 ***Question: should OpenAlias maintain key-value pairs for `_openalias-metadata` records?***
 
@@ -143,17 +147,18 @@ We will use the example OpenAlias `example@openalias.org` with the following rec
 
 ### _openalias-payment.example
 
-> oa2 btc:btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v
+> oa2 btc/btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v
 > oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H
 > oa2 xmr address=888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H
 > oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
 > oa2 poly address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
 > oa2 base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
-> oa2 usdc:base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
+> oa2 base/usdc address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
+> oa2 eth/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984 address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
 
 ### _openalias-routing.example
 
-> oa2 usdc:base 10
+> oa2 base/usdc 10
 > oa2 eth 20
 > oa2 poly 30
 > oa2 base 40
@@ -168,13 +173,13 @@ We will use the example OpenAlias `example@openalias.org` with the following rec
 
 2. Optional: fetch the `_openalias-metadata.example` record. If you have implemented any key-value pairs such as `image`, use them as desired.
 
-3. Determine based on sender context what assets and/or networks that should be reviewed. You should review ALL records that could be used in the context of the sending experience. Make lists with the applicable `asset_ticker` and `asset_network` values.
+3. Determine based on sender context what assets and/or networks that should be reviewed. You should review ALL records that could be used in the context of the sending experience. Make lists with the applicable `asset_network` and `asset_type` values.
 
-4. Fetch all `_openalias-routing.example` records. For each, derive the `asset_ticker` and `asset_network` that they relate to. Discard all `_openalias-routing.example` records that do not match either the `asset_ticker` or `asset_network`.
+4. Fetch all `_openalias-routing.example` records. For each, derive the `asset_network` and `asset_type` that they relate to. Discard all `_openalias-routing.example` records that do not match either the `asset_network` and `asset_type`.
 
 5. Sort the  `_openalias-routing.example` records by priority (lower number = higher priority). Skip this step if there are no `_openalias-routing.example` records.
 
-6. Fetch all `_openalias-payment.example` records. For each, derive the `asset_ticker` and `asset_network` that they relate to. Discard all `_openalias-payment.example` records that do not match either the `asset_ticker` or `asset_network`.
+6. Fetch all `_openalias-payment.example` records. For each, derive the `asset_network` and `asset_type` that they relate to. Discard all `_openalias-payment.example` records that do not match either the `asset_network` and `asset_type`.
 
 7. Starting with highest priority routing record, search for a matching `_openalias-payment.example` record. If there are no matching records for that priority, then move to the next routing record. If there are no `_openalias-routing.example` records, then use the payment record.
 
@@ -188,8 +193,37 @@ We will use the example OpenAlias `example@openalias.org` with the following rec
 
 * If the user is sending USDT and the wallet supports the ETH and POLY networks, then the final used payment record should be `oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97`
 
-* If the user is sending BTC and the wallet supports sending to bip352 addresses, then the final used payment record should be `oa2 btc:btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v` or a user selection for the two `btc` records.
+* If the user is sending BTC and the wallet supports sending to bip352 addresses, then the final used payment record should be `oa2 btc/btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v` or a user selection for the two `btc` records.
 
 * If the user is sending BTC and the wallet does NOt support sending to bip352 addresses, then the final used payment record should be `oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H`
 
-* If a user is sending USDC and the wallets supports the ETH and BASE networks, then the final used payment record should be `oa2 usdc:base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97`.
+* If a user is sending USDC and the wallets supports the ETH and BASE networks, then the final used payment record should be `oa2 base/usdc address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97`.
+
+## FAQ
+
+### Why not use CAIP-2 and CAIP-19 directly for `asset_network` and `asset_type`?
+
+CAIP-2 references other standards. For example, the CAIP-2 blockchain identifiers for the following common assets are:
+
+| Blockchain Friendly Name | CAIP-2 | OpenAlias `asset_network` |
+| --- | --- | --- |
+| Bitcoin Mainnet | `bip122:000000000019d6689c085ae165831e93` | `btc` |
+| Monero Mainnet | `monero:418015bb9ae982a1975da7d79277c270` | `xmr` |
+| Litecoin Mainnet | `bip122:12a765e31ffd4059bada1e25190f6e98` | `ltc` |
+
+CAIP-19 references other lists. The following example CAIP-19 asset identifiers are:
+
+| Blockchain Friendly Name | CAIP-19 | OpenAlias `asset_network` and `asset_type` |
+| --- | --- | --- |
+| Uniswap on Ethereum | `eip155:1/erc20:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984` | `eth/uni` or `eth/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984` |
+| XMR on Monero | `monero:418015bb9ae982a1975da7d79277c270/slip44:128` | `xmr/xmr` |
+| BTC on Bitcoin | `bip122:000000000019d6689c085ae165831e93/slip44:0` | `btc/btc` |
+| LTC on Litecoin | `bip122:12a765e31ffd4059bada1e25190f6e98/slip44:2` | `ltc/ltc` |
+
+Including CAIP-2 and CAIP-19 in their entirety is overkill for OpenAlias purposes.
+
+Nevertheless, CAIP-2 and CAIP-19 are useful for mapping OpenAlias `asset_network` and `asset_type` values for completeness.
+
+### Why not support stagenet/testnet? Why only mainnet?
+
+OpenAlias test sending flows can be accomplished without sending transactions, since it is an address and metadata lookup standard. Thus, there is little additional value to be achieved by the increased complexity of supporting networks that are only used for testing purposes.

@@ -1,0 +1,52 @@
+OpenAlias asset_network,Asset Common Name,CAIP-2 prefix
+aleo,Aleo Network,aleo:0
+algo,Algorand,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k
+eos,EOS,antelope:aca376f206b8fc25a6ed44dbdc66547c
+wax,WAX,antelope:1064487b3cd1a897ce03ae5b6a865651
+telos,Telos,antelope:4667b205c6838ef70ff7988f6e8257e8
+ore,ORE,antelope:7900eaca71d5b213d3e1e15d54d98ad2
+instar,INSTAR,antelope:b042025541e25a472bffde2d62edd457
+proton,Proton,antelope:384da888112027f0321850a169f737c3
+fio,FIO,antelope:21dcae42c0182200e93f954a074011f9
+ultra,Ultra,antelope:a9c481dfbc7d9506dc7e87e9a137c931
+ux,UX,antelope:8fc6dce7942189f842170de953932b1f
+libre,Libre,antelope:38b1d7815474d0c60683ecbea321d723
+arweave,Arweave,arweave:7wIU
+btc,Bitcoin,bip122:000000000019d6689c085ae165831e93
+ltc,Litecoin,bip122:12a765e31ffd4059bada1e25190f6e98
+feather,Feathercoin,bip122:fdbe99b90c90bae7505796461471d89a
+casper,Casper,casper:casper
+ccd,Concordium,ccd:9dd9ca4d19e9393877d2c44b70f89acb
+chia,Chia,chia:ccd5bb71183532bff220ba46c268991a
+eth,Ethereum,eip155:1
+ergo,Ergo,ergo:b0244dfc267baca974a4caee06120321
+fil,Filecoin,fil:f
+hedera,Hedera,hedera:mainnet
+koinos,Koinos,koinos:EiBZK_GGVP0H_fXVAM3j6EAuz3-B-l3e
+mina,Mina,mina:mainnet
+xmr,Monero,monero:418015bb9ae982a1975da7d79277c270
+wow,Wownero,monero:a3fd635dd5cb55700317783469ba749b
+mvx,MultiversX,mvx:1
+reef,Reef,reef:7834781d38e4798d548e34ec947d19de
+sol,Solana,solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp
+stacks,Stacks,stacks:1
+starknet,Starknet,starknet:SN_MAIN
+xlm,Stellar,stellar:pubnet
+tezos,Tezos,tezos:NetXdQprcVkpaWU
+vet,Vechain,vechain:b1ac3413d346d43539627e6be7ec1b4a
+waves,Waves,waves:087
+xrp,Ripple,xrpl:0
+rune,Thorchain,
+lisk,Lisk,lip9:9ee11e9df416b18b
+poly,Polygon (MATIC),
+base,Base,
+arb,Arbitrum One,
+arbn,Arbitrum Nova,
+ava,Avalanche,
+celo,Celo,
+flow,Flow,
+op,OP Mainnet (Optimism),
+polka,Polkadot,
+polypos,Polygon PoS,
+zksync,Zksync,
+zec,Zcash,

@@ -38,15 +38,15 @@ waves,Waves,waves:087
 xrp,Ripple,xrpl:0
 rune,Thorchain,
 lisk,Lisk,lip9:9ee11e9df416b18b
-poly,Polygon (MATIC),
-base,Base,
-arb,Arbitrum One,
-arbn,Arbitrum Nova,
-ava,Avalanche,
-celo,Celo,
-flow,Flow,
-op,OP Mainnet (Optimism),
+poly,Polygon (MATIC),eip155:137
+base,Base,eip155:8453
+arb,Arbitrum One,eip155:42161
+arbn,Arbitrum Nova,eip155:42170
+ava,Avalanche C-Chain,eip155:43114
+celo,Celo,eip155:42220
+flow,Flow,eip155:747
+op,OP Mainnet (Optimism),eip155:10
 polka,Polkadot,
 polypos,Polygon PoS,
-zksync,Zksync,
+zksync,Zksync,eip155:324
 zec,Zcash,

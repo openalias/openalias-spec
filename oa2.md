@@ -58,7 +58,7 @@ This is an optional link to an image file on the ***same*** domain and subdomain
 
 > image=https://getmonero.org/press-kit/symbols/monero-symbol-on-white-480.png
 
-Wallet developers MUST prohibit image lookups on another domain or subdomain.
+Wallet developers MUST prohibit image (and other metadata) lookups to links on another domain or subdomain.
 
 ### `_openalias-payment`
 
@@ -100,6 +100,16 @@ The `address_component` includes the `address` prefixed by an optional `address_
 
 The `address_type` is an optional (but recommended) identifier for the address type. Example address types might be `p2tr`, `p2wpkh`, `p2sh`, `p2pkh`, `bip352` (silent payments address), `bip47` (PayNym).
 
+#### `checksum`
+
+Including a checksum is optional.
+
+OA1 used CRC32; OA2 uses Adler-32.
+
+> checksum = adler32(concatenate(all_fields_except_checksum))
+
+***Question (primarily for fluffypony): Why use Adler-32?***
+
 ### `_openalias-routing`
 
 `_openalias-routing` is an advanced record type for communicating payment priority. Routing records contain an `asset_type` (optional), `asset_network`, and `priority`.
@@ -139,7 +149,21 @@ OA2 should maintain a list that maps `asset_network` and `asset_type` values to 
 
 ***Question: is there a need to map `asset_network` and `asset_type` to ecosystem lists outside of CAIP-2 and CAIP-19?***
 
-***Question: should OpenAlias maintain key-value pairs for `_openalias-metadata` records?***
+***Question: should OpenAlias maintain a list of key-value pairs for `_openalias-metadata` records?***
+
+## Security Considerations and Requirements
+
+There must be a valid DNSSEC trust chain (RRSIG, DNSKEY, NSEC3), or else the OpenAlias lookup must fail. DNSSEC is much more widely supported than it was when the OA1 standard was created.
+
+## Privacy Considerations and Requirements
+
+When fetching metadata from links, such as an image, this will leak the user's IP address to that server.
+
+Implementations must restrict metadata link lookups to the specific domain and subdomain.
+
+Implementations should consider opt-in user consent before fetching content from links. This can be done through an application setting or requested in each situation.
+
+Implementations should consider proxying link information requests if they already proxy other information for users.
 
 ## Example
 
@@ -147,14 +171,14 @@ We will use the example OpenAlias `example@openalias.org` with the following rec
 
 ### _openalias-payment.example
 
-> oa2 btc/btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v
-> oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H
-> oa2 xmr address=888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H
-> oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
-> oa2 poly address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
-> oa2 base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
-> oa2 base/usdc address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
-> oa2 eth/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984 address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97
+> oa2 btc/btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v;
+> oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H;
+> oa2 xmr address=888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H;
+> oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+> oa2 poly address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+> oa2 base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+> oa2 base/usdc address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+> oa2 eth/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984 address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
 
 ### _openalias-routing.example
 
@@ -171,19 +195,21 @@ We will use the example OpenAlias `example@openalias.org` with the following rec
 
 1. The sender provides `example@openalias.org` as the string that they wish to send their funds to.
 
-2. Optional: fetch the `_openalias-metadata.example` record. If you have implemented any key-value pairs such as `image`, use them as desired.
+2. Optional: fetch the `_openalias-metadata.example` record. If you have implemented any key-value pairs such as `image`, use them as desired. Do not load any content from a different domain and subdomain (if applicable). You might consider requiring explicit user content before fetching links, and warning the user that this will potentially leak their IP address to the server.
 
 3. Determine based on sender context what assets and/or networks that should be reviewed. You should review ALL records that could be used in the context of the sending experience. Make lists with the applicable `asset_network` and `asset_type` values.
 
 4. Fetch all `_openalias-routing.example` records. For each, derive the `asset_network` and `asset_type` that they relate to. Discard all `_openalias-routing.example` records that do not match either the `asset_network` and `asset_type`.
 
-5. Sort the  `_openalias-routing.example` records by priority (lower number = higher priority). Skip this step if there are no `_openalias-routing.example` records.
+5. Confirm that the domain properly has DENSSEC configured. If it is not properly configured, then throw an error saying that the recipient has not safely configured DNSSEC for OpenAlias.
 
-6. Fetch all `_openalias-payment.example` records. For each, derive the `asset_network` and `asset_type` that they relate to. Discard all `_openalias-payment.example` records that do not match either the `asset_network` and `asset_type`.
+6. Sort the  `_openalias-routing.example` records by priority (lower number = higher priority). Skip this step if there are no `_openalias-routing.example` records.
 
-7. Starting with highest priority routing record, search for a matching `_openalias-payment.example` record. If there are no matching records for that priority, then move to the next routing record. If there are no `_openalias-routing.example` records, then use the payment record.
+7. Fetch all `_openalias-payment.example` records. For each, derive the `asset_network` and `asset_type` that they relate to. Discard all `_openalias-payment.example` records that do not match either the `asset_network` and `asset_type`.
 
-8. If there are several matching records, then select the priority record as follows:
+8. Starting with highest priority routing record, search for a matching `_openalias-payment.example` record. If there are no matching records for that priority, then move to the next routing record. If there are no `_openalias-routing.example` records, then use the payment record.
+
+9. If there are several matching records, then select the priority record as follows:
 
     1. First, filter out all `address_type` instances that are marked incompatible. For example, if a wallet cannot send to a bip352 address, then remove that record. Wallets should check compatibility with the address by seeing if the `address_type` string is supported, or through some other separate address validation logic. If only one record remains, then use that record.
 
@@ -203,7 +229,7 @@ We will use the example OpenAlias `example@openalias.org` with the following rec
 
 ### Why not use CAIP-2 and CAIP-19 directly for `asset_network` and `asset_type`?
 
-CAIP-2 references other standards. For example, the CAIP-2 blockchain identifiers for the following common assets are:
+CAIPs references other [namespace](https://namespaces.chainagnostic.org/) standards. For example, the CAIP-2 blockchain identifiers for the following common assets are:
 
 | Blockchain Friendly Name | CAIP-2 | OpenAlias `asset_network` |
 | --- | --- | --- |
@@ -211,7 +237,7 @@ CAIP-2 references other standards. For example, the CAIP-2 blockchain identifier
 | Monero Mainnet | `monero:418015bb9ae982a1975da7d79277c270` | `xmr` |
 | Litecoin Mainnet | `bip122:12a765e31ffd4059bada1e25190f6e98` | `ltc` |
 
-CAIP-19 references other lists. The following example CAIP-19 asset identifiers are:
+Likewise, CAIP-19 references other [namespaces](https://namespaces.chainagnostic.org/), with `slip144` being the primary namespace outside ecosystem-specific ones. The following example CAIP-19 asset identifiers are:
 
 | Blockchain Friendly Name | CAIP-19 | OpenAlias `asset_network` and `asset_type` |
 | --- | --- | --- |
@@ -220,10 +246,16 @@ CAIP-19 references other lists. The following example CAIP-19 asset identifiers 
 | BTC on Bitcoin | `bip122:000000000019d6689c085ae165831e93/slip44:0` | `btc/btc` |
 | LTC on Litecoin | `bip122:12a765e31ffd4059bada1e25190f6e98/slip44:2` | `ltc/ltc` |
 
-Including CAIP-2 and CAIP-19 in their entirety is overkill for OpenAlias purposes.
+Including CAIP-2 and CAIP-19 in their entirety is overkill for OpenAlias purposes. Supporting native use of CAIP-2 and CAIP-19 in OpenAlias records would add these [namespaces](https://namespaces.chainagnostic.org/) as a dependency. The benefits of allowing CAIP natively in OpenAlias seems to create more work and complexity overall; however, this could be reconsidered if CAIP is widely adopted in nearly all wallets.
 
 Nevertheless, CAIP-2 and CAIP-19 are useful for mapping OpenAlias `asset_network` and `asset_type` values for completeness.
 
 ### Why not support stagenet/testnet? Why only mainnet?
 
 OpenAlias test sending flows can be accomplished without sending transactions, since it is an address and metadata lookup standard. Thus, there is little additional value to be achieved by the increased complexity of supporting networks that are only used for testing purposes.
+
+### Does OpenAlias aim to allow other record standards (ENS, Unstoppable Domains) to directly work with OpenAlias?
+
+No. OpenAlias will not aim to directly support other standards. However, OpenAlias aims to avoid conflicting with other standards.
+
+One long-term goal could be to build a universal library that allows interpreting a variety of standards including OpenAlias and other popular standards.

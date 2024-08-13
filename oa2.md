@@ -145,11 +145,13 @@ For OA1, there was an expressed interest in maintaining an official list of pref
 
 For OA2, OpenAlias should publish standardized lists of `asset_type` (for major assets only), `asset_network`, and `address_type`.
 
-OA2 should maintain a list that maps `asset_network` and `asset_type` values to [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) and [CAIP-19](https://chainagnostic.org/CAIPs/caip-19), respectively.
+OA2 should maintain a list that maps `asset_network` and `asset_type` values to [CAIP-2](https://chainagnostic.org/CAIPs/caip-2) and [CAIP-19](https://chainagnostic.org/CAIPs/caip-19), respectively. OA2 does not plan to maintain a list for metadata records.
 
-***Question: is there a need to map `asset_network` and `asset_type` to ecosystem lists outside of CAIP-2 and CAIP-19?***
+These lists are available in the `/oa2-lists` folder.
 
-***Question: should OpenAlias maintain a list of key-value pairs for `_openalias-metadata` records?***
+### Proposing Changes (Additions/Deletions/Modifications) to the Lists
+
+Please open a pull request to suggest changes to an existing list. In your pull request, make sure to follow the proper formatting of the destination list.
 
 ## Security Considerations and Requirements
 

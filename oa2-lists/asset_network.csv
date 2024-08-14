@@ -12,8 +12,8 @@ avaxp,Avalanche P-Chain,avax:Rr9hnPVPxuUvrdCul-vjEsU1zmqKqRDo
 avaxx,Avalanche X-Chain,avax:imji8papUf2EhV3le337w1vgFauqkJg-
 ban,Banano,
 base,Base,eip155:8453
-bch,Bitcoin Cash,bip122:
-bsc,Binance Smart Chain,
+bch,Bitcoin Cash,bip122:000000000000000000651ef99cb9fcbe
+bsc,BNB Smart Chain,eip155:56
 bsq,bisq Token,
 bsv,BitcoinSV,bip122:
 btc,Bitcoin,bip122:000000000019d6689c085ae165831e93
@@ -21,12 +21,12 @@ casper,Casper,casper:casper
 ccd,Concordium,ccd:9dd9ca4d19e9393877d2c44b70f89acb
 celo,Celo,eip155:42220
 chia,Chia,chia:ccd5bb71183532bff220ba46c268991a
-dash,Dash,bip122:
+dash,Dash,bip122:00000ffd590b1485b3caadc19b22e637
 dcr,Decred,
-doge,Dogecoin,bip122:
+doge,Dogecoin,bip122:1a91e3dace36e2be3bf030a65679fe82
 eos,EOS,antelope:aca376f206b8fc25a6ed44dbdc66547c
 ergo,Ergo,ergo:b0244dfc267baca974a4caee06120321
-etc,Ether Classic,
+etc,Ether Classic,eip155:61
 eth,Ethereum,eip155:1
 feather,Feathercoin,bip122:fdbe99b90c90bae7505796461471d89a
 fil,Filecoin,fil:f
@@ -59,7 +59,6 @@ part,Particl,
 pivx,Pivx,
 polka,Polkadot,
 poly,Polygon (MATIC),eip155:137
-polypos,Polygon PoS,
 proton,Proton,antelope:384da888112027f0321850a169f737c3
 reef,Reef,reef:7834781d38e4798d548e34ec947d19de
 rune,Thorchain,
@@ -82,9 +81,9 @@ vet,Vechain,vechain:b1ac3413d346d43539627e6be7ec1b4a
 waves,Waves,waves:087
 wax,WAX,antelope:1064487b3cd1a897ce03ae5b6a865651
 wow,Wownero,monero:a3fd635dd5cb55700317783469ba749b
-xdai,xDai,
+xdai,Gnosis,eip155:100
 xem,NEM,
-xhv,Haven Protocol,monero:
+xhv,Haven Protocol,monero:4b49042122496cc7e94d392b29bd12eb
 xlm,Stellar,stellar:pubnet
 xmr,Monero,monero:418015bb9ae982a1975da7d79277c270
 xno,Nano,

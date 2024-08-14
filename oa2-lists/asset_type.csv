@@ -10,10 +10,10 @@ avax,avaxp,Avalanche,avax:Rr9hnPVPxuUvrdCul-vjEsU1zmqKqRDo,,avax:Rr9hnPVPxuUvrdC
 avax,avaxx,Avalanche,avax:imji8papUf2EhV3le337w1vgFauqkJg-,,avax:imji8papUf2EhV3le337w1vgFauqkJg-/
 avax,poly,Avalanche,eip155:137,erc20:0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b,eip155:137/erc20:0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b
 ban,ban,Banano,,slip44:198,/slip44:198
-bch,bch,Bitcoin Cash,bip122:,slip44:145,bip122:/slip44:145
+bch,bch,Bitcoin Cash,bip122:000000000000000000651ef99cb9fcbe,slip44:145,bip122:000000000000000000651ef99cb9fcbe/slip44:145
 bnb,poly,BNB,eip155:137,erc20:0x3BA4c387f786bFEE076A58914F5Bd38d668B42c3,eip155:137/erc20:0x3BA4c387f786bFEE076A58914F5Bd38d668B42c3
 bnb,eth,BNB,eip155:1,erc20:0xB8c77482e45F1F44dE1745F52C74426C631bDD52,eip155:1/erc20:0xB8c77482e45F1F44dE1745F52C74426C631bDD52
-bsc,bsc,Binance Smart Chain,,slip44:9006,/slip44:9006
+bsc,bsc,Binance Smart Chain,eip155:56,slip44:9006,eip155:56/slip44:9006
 bsq,bsq,bisq Token,,slip44:142,/slip44:142
 bsv,bsv,BitcoinSV,bip122:,slip44:236,bip122:/slip44:236
 btc,btc,Bitcoin,bip122:000000000019d6689c085ae165831e93,slip44:0,bip122:000000000019d6689c085ae165831e93/slip44:0
@@ -23,11 +23,11 @@ ccd,ccd,Concordium,ccd:9dd9ca4d19e9393877d2c44b70f89acb,slip44:919,ccd:9dd9ca4d1
 celo,celo,Celo,eip155:42220,slip44:52752,eip155:42220/slip44:52752
 dai,eth,Dai Stablecoin,eip155:1,erc20:0x6b175474e89094c44da98b954eedeac495271d0f,eip155:1/erc20:0x6b175474e89094c44da98b954eedeac495271d0f
 dai,poly,Dai Stablecoin,eip155:137,erc20:0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063,eip155:137/erc20:0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063
-dash,dash,Dash,bip122:,slip44:5,bip122:/slip44:5
+dash,dash,Dash,bip122:00000ffd590b1485b3caadc19b22e637,slip44:5,bip122:00000ffd590b1485b3caadc19b22e637/slip44:5
 dcr,dcr,Decred,,slip44:42,/slip44:42
-doge,doge,Dogecoin,bip122:,slip44:3,bip122:/slip44:3
+doge,doge,Dogecoin,bip122:1a91e3dace36e2be3bf030a65679fe82,slip44:3,bip122:1a91e3dace36e2be3bf030a65679fe82/slip44:3
 eos,eos,EOS,antelope:aca376f206b8fc25a6ed44dbdc66547c,slip44:194,antelope:aca376f206b8fc25a6ed44dbdc66547c/slip44:194
-etc,etc,Ether Classic,,slip44:61,/slip44:61
+etc,etc,Ether Classic,eip155:61,slip44:61,eip155:61/slip44:61
 eth,eth,Ether,eip155:1,slip44:60,eip155:1/slip44:60
 fil,fil,Filecoin,fil:f,slip44:461,fil:f/slip44:461
 fio,fio,FIO,antelope:21dcae42c0182200e93f954a074011f9,slip44:235,antelope:21dcae42c0182200e93f954a074011f9/slip44:235
@@ -51,6 +51,8 @@ omni,omni,Omni,,slip44:200,/slip44:200
 part,part,Particl,,slip44:44,/slip44:44
 pepe,eth,Pepe,eip155:1,erc20:0x6982508145454ce325ddbe47a25d4ec3d2311933,eip155:1/erc20:0x6982508145454ce325ddbe47a25d4ec3d2311933
 pivx,pivx,Pivx,,slip44:119,/slip44:119
+pyusd,eth,PayPal USD,eip155:1,erc20:0x6c3ea9036406852006290770bedfcaba0e23a0e8,eip155:1/erc20:0x6c3ea9036406852006290770bedfcaba0e23a0e8
+pyusd,sol,PayPal USD,,token:2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo,/token:2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo
 reef,reef,Reef,reef:7834781d38e4798d548e34ec947d19de,slip44:819,reef:7834781d38e4798d548e34ec947d19de/slip44:819
 rune,rune,THORChain (RUNE),,slip44:931,/slip44:931
 rvn,rvn,Ravencoin,,slip44:175,/slip44:175
@@ -97,9 +99,9 @@ weth,poly,Wrapped Ether,eip155:137,erc20:0x7ceb23fd6bc0add59e62ac25578270cff1b9f
 weth,eth,Wrapped Ether,eip155:1,erc20:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2,eip155:1/erc20:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
 wow,wow,Wownero,monero:a3fd635dd5cb55700317783469ba749b,slip44:417,monero:a3fd635dd5cb55700317783469ba749b/slip44:417
 wtrx,trx,Wrapped TRX,,trc20:TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR,/trc20:TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR
-xdai,xdai,xDai,,slip44:700,/slip44:700
+xdai,xdai,xDai,eip155:100,slip44:700,eip155:100/slip44:700
 xem,xem,NEM,,slip44:43,/slip44:43
-xhv,xhv,Haven Protocol,monero:,slip44:535,monero:/slip44:535
+xhv,xhv,Haven Protocol,monero:4b49042122496cc7e94d392b29bd12eb,slip44:535,monero:4b49042122496cc7e94d392b29bd12eb/slip44:535
 xlm,xlm,Stellar Lumens,stellar:pubnet,slip44:148,stellar:pubnet/slip44:148
 xmr,xmr,Monero,monero:418015bb9ae982a1975da7d79277c270,slip44:128,monero:418015bb9ae982a1975da7d79277c270/slip44:128
 xno,xno,Nano,,slip44:165,/slip44:165

@@ -65,7 +65,7 @@ steth,eth,stETH,eip155:1,erc20:0xae7ab96520de3a18e5e111b5eaab095312d7fe84,eip155
 strk,strk,StarkNet,,slip44:9004,/slip44:9004
 telos,telos,TelosCoin,antelope:4667b205c6838ef70ff7988f6e8257e8,slip44:424,antelope:4667b205c6838ef70ff7988f6e8257e8/slip44:424
 ton,ton,TON,,slip44:607,/slip44:607
-trx,tron,Tron,,slip44:195,/slip44:195
+trx,trx,Tron,,slip44:195,/slip44:195
 um,um,Penumbra,,slip44:6532,/slip44:6532
 uni,eth,Uniswap,eip155:1,erc20:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984,eip155:1/erc20:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984
 usdc,algo,USD Coin,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k,token:31566704,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k/token:31566704

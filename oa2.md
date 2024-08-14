@@ -43,14 +43,16 @@ Example name and image for `donate@openalias.org`:
 
 #### `_openalias-metadata` Key-Value Pairs
 
-* name
-* description
-* checksum
-* image
-* twitter
-* nostr
-* signal
-* telegram
+OA2 does not maintain an official list of all `_openalias-metadata` key-value pairs. All key-value pairs are optional. Developers are free to create their own unique key-value pairs. The following are somewhat standardized for common use:
+
+* `name`: Intended as a display name for the recipient, e.g. "Satoshi Nakamoto".
+* `description`: Intended as a description for the transaction, e.g. "Donation to project development".
+* `checksum`: Intended as a checksum. More details below.
+* `image`: Intended as a display image when interacting with the recipient. More details below.
+* `twitter`: Intended for a Twitter username, e.g. "AP" (excludes the `@`).
+* `nostr`: Intended for a Nostr username.
+* `signal`: Intended for a Signal messenger username.
+* `telegram`: Intended for a Telegram username.
 
 #### `image`
 
@@ -59,6 +61,14 @@ This is an optional link to an image file on the ***same*** domain and subdomain
 > image=https://getmonero.org/press-kit/symbols/monero-symbol-on-white-480.png
 
 Wallet developers MUST prohibit image (and other metadata) lookups to links on another domain or subdomain.
+
+#### `checksum`
+
+OA1 used CRC32; OA2 uses Adler-32.
+
+> checksum = adler32(concatenate(all_fields_except_checksum))
+
+***Question (primarily for fluffypony): Why use Adler-32?***
 
 ### `_openalias-payment`
 

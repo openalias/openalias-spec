@@ -2,7 +2,7 @@
 
 This GitHub repository is the home for the official OpenAlias specifications.
 
-The OpenAlias v2 Specification is currently being discussed. Please review the pull requests and issues, and join our [Matrix](https://matrix.to/#/#openalias:matrix.org) or Libera IRC (#openalias) channel for further discussion.
+The OpenAlias v2 Specification is currently a release candidate, and the discussion is nearing completion. Please review the pull requests and issues, and join our [Matrix](https://matrix.to/#/#openalias:matrix.org) or Libera IRC (#openalias) channel for further discussion.
 
 ## What is OpenAlias?
 
@@ -73,7 +73,7 @@ This varies by OA version. Please see the table below:
 | OpenAlias Version | Specification Link |
 | --- | --- |
 | OA1 | [Link](/oa1.md) |
-| OA2 | [Link](/oa2.md) |
+| OA2 (Release Candidate) | [Link](/oa2.md) |
 
 ## How can I support the OpenAlias project?
 

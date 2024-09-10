@@ -1,0 +1,112 @@
+OpenAlias asset_type,OpenAlias asset_network,Asset Common Name,CAIP-2 Prefix,CAIP-19 Suffix,CAIP-19
+ada,ada,Cardano,,slip44:1815,/slip44:1815
+aleo,aleo,Aleo Network,aleo:0,slip44:683,aleo:0/slip44:683
+algo,algo,Algorand,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k,slip44:283,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k/slip44:283
+aptos,aptos,Aptos,,slip44:637,/slip44:637
+arb1,arb,Arbitrum,eip155:42161,slip44:9001,eip155:42161/slip44:9001
+ark,ark,ARK,,slip44:111,/slip44:111
+avax,avaxc,Avalanche,avax:8aDU0Kqh-5d23op-B-r-4YbQFRbsgF9a,slip44:9005,avax:8aDU0Kqh-5d23op-B-r-4YbQFRbsgF9a/slip44:9005
+avax,avaxp,Avalanche,avax:Rr9hnPVPxuUvrdCul-vjEsU1zmqKqRDo,,avax:Rr9hnPVPxuUvrdCul-vjEsU1zmqKqRDo/
+avax,avaxx,Avalanche,avax:imji8papUf2EhV3le337w1vgFauqkJg-,,avax:imji8papUf2EhV3le337w1vgFauqkJg-/
+avax,poly,Avalanche,eip155:137,erc20:0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b,eip155:137/erc20:0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b
+ban,ban,Banano,,slip44:198,/slip44:198
+bch,bch,Bitcoin Cash,bip122:000000000000000000651ef99cb9fcbe,slip44:145,bip122:000000000000000000651ef99cb9fcbe/slip44:145
+bnb,poly,BNB,eip155:137,erc20:0x3BA4c387f786bFEE076A58914F5Bd38d668B42c3,eip155:137/erc20:0x3BA4c387f786bFEE076A58914F5Bd38d668B42c3
+bnb,eth,BNB,eip155:1,erc20:0xB8c77482e45F1F44dE1745F52C74426C631bDD52,eip155:1/erc20:0xB8c77482e45F1F44dE1745F52C74426C631bDD52
+bsc,bsc,Binance Smart Chain,eip155:56,slip44:9006,eip155:56/slip44:9006
+bsq,bsq,bisq Token,,slip44:142,/slip44:142
+bsv,bsv,BitcoinSV,bip122:,slip44:236,bip122:/slip44:236
+btc,btc,Bitcoin,bip122:000000000019d6689c085ae165831e93,slip44:0,bip122:000000000019d6689c085ae165831e93/slip44:0
+btt,trx,BitTorrent,,trc20:TAFjULxiVgT4qWk6UZwjqwZXTSaGaqnVp4,/trc20:TAFjULxiVgT4qWk6UZwjqwZXTSaGaqnVp4
+busd,poly,Binance USD,eip155:137,erc20:0xdab529f40e671a1d4bf91361c21bf9f0c9712ab7,eip155:137/erc20:0xdab529f40e671a1d4bf91361c21bf9f0c9712ab7
+ccd,ccd,Concordium,ccd:9dd9ca4d19e9393877d2c44b70f89acb,slip44:919,ccd:9dd9ca4d19e9393877d2c44b70f89acb/slip44:919
+celo,celo,Celo,eip155:42220,slip44:52752,eip155:42220/slip44:52752
+dai,eth,Dai Stablecoin,eip155:1,erc20:0x6b175474e89094c44da98b954eedeac495271d0f,eip155:1/erc20:0x6b175474e89094c44da98b954eedeac495271d0f
+dai,poly,Dai Stablecoin,eip155:137,erc20:0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063,eip155:137/erc20:0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063
+dash,dash,Dash,bip122:00000ffd590b1485b3caadc19b22e637,slip44:5,bip122:00000ffd590b1485b3caadc19b22e637/slip44:5
+dcr,dcr,Decred,,slip44:42,/slip44:42
+doge,doge,Dogecoin,bip122:1a91e3dace36e2be3bf030a65679fe82,slip44:3,bip122:1a91e3dace36e2be3bf030a65679fe82/slip44:3
+eos,eos,EOS,antelope:aca376f206b8fc25a6ed44dbdc66547c,slip44:194,antelope:aca376f206b8fc25a6ed44dbdc66547c/slip44:194
+etc,etc,Ether Classic,eip155:61,slip44:61,eip155:61/slip44:61
+eth,eth,Ether,eip155:1,slip44:60,eip155:1/slip44:60
+fil,fil,Filecoin,fil:f,slip44:461,fil:f/slip44:461
+fio,fio,FIO,antelope:21dcae42c0182200e93f954a074011f9,slip44:235,antelope:21dcae42c0182200e93f954a074011f9/slip44:235
+firo,firo,Firo (Zcoin),,slip44:136,/slip44:136
+flow,flow,Flow,eip155:747,slip44:539,eip155:747/slip44:539
+grc,grc,Gridcoin,,slip44:84,/slip44:84
+grin,grin,Grin,,slip44:592,/slip44:592
+hbc,hbc,HuobiChain,,slip44:553,/slip44:553
+icp,icp,Internet Computer (DFINITY),,slip44:223,/slip44:223
+iota,iota,IOTA,,slip44:4218,/slip44:4218
+iron,iron,Iron Fish,,slip44:1338,/slip44:1338
+kmd,kmd,Komodo,,slip44:141,/slip44:141
+link,eth,ChainLink,eip155:1,erc20:0x514910771af9ca656af840dff83e8264ecf986ca,eip155:1/erc20:0x514910771af9ca656af840dff83e8264ecf986ca
+loop,loop,Loopring,,slip44:9003,/slip44:9003
+lsk,lsk,Lisk,,slip44:134,/slip44:134
+ltc,ltc,Litecoin,bip122:12a765e31ffd4059bada1e25190f6e98,slip44:2,bip122:12a765e31ffd4059bada1e25190f6e98/slip44:2
+matic,eth,Matic Token,eip155:1,erc20:0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0,eip155:1/erc20:0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0
+mina,mina,Mina,mina:mainnet,slip44:12586,mina:mainnet/slip44:12586
+nmc,nmc,Namecoin,,slip44:7,/slip44:7
+omni,omni,Omni,,slip44:200,/slip44:200
+part,part,Particl,,slip44:44,/slip44:44
+pepe,eth,Pepe,eip155:1,erc20:0x6982508145454ce325ddbe47a25d4ec3d2311933,eip155:1/erc20:0x6982508145454ce325ddbe47a25d4ec3d2311933
+pivx,pivx,Pivx,,slip44:119,/slip44:119
+pyusd,eth,PayPal USD,eip155:1,erc20:0x6c3ea9036406852006290770bedfcaba0e23a0e8,eip155:1/erc20:0x6c3ea9036406852006290770bedfcaba0e23a0e8
+pyusd,sol,PayPal USD,,token:2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo,/token:2b1kV6DkPAnxd5ixfnxCpjxmKwqjjaYmCZfHsFu24GXo
+reef,reef,Reef,reef:7834781d38e4798d548e34ec947d19de,slip44:819,reef:7834781d38e4798d548e34ec947d19de/slip44:819
+rune,rune,THORChain (RUNE),,slip44:931,/slip44:931
+rvn,rvn,Ravencoin,,slip44:175,/slip44:175
+sc,sc,Sia,,slip44:1991,/slip44:1991
+scrt,scrt,Secret Network,,slip44:529,/slip44:529
+shib,poly,SHIBA INU,eip155:137,erc20:0x6f8a06447ff6fcf75d803135a7de15ce88c1d4ec,eip155:137/erc20:0x6f8a06447ff6fcf75d803135a7de15ce88c1d4ec
+shib,eth,SHIBA INU,eip155:1,erc20:0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE,eip155:1/erc20:0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE
+sol,sol,Solana,solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp,slip44:501,solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp/slip44:501
+sol,poly,Wrapped Solana (Wormhole),eip155:137,erc20:0xd93f7e271cb87c23aaa73edc008a79646d1f9912,eip155:137/erc20:0xd93f7e271cb87c23aaa73edc008a79646d1f9912
+steem,steem,Steem,,slip44:135,/slip44:135
+steth,eth,stETH,eip155:1,erc20:0xae7ab96520de3a18e5e111b5eaab095312d7fe84,eip155:1/erc20:0xae7ab96520de3a18e5e111b5eaab095312d7fe84
+strk,strk,StarkNet,,slip44:9004,/slip44:9004
+telos,telos,TelosCoin,antelope:4667b205c6838ef70ff7988f6e8257e8,slip44:424,antelope:4667b205c6838ef70ff7988f6e8257e8/slip44:424
+ton,ton,TON,,slip44:607,/slip44:607
+trx,trx,Tron,,slip44:195,/slip44:195
+um,um,Penumbra,,slip44:6532,/slip44:6532
+uni,eth,Uniswap,eip155:1,erc20:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984,eip155:1/erc20:0x1f9840a85d5af5bf1d1762f925bdaddc4201f984
+usdc,algo,USD Coin,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k,token:31566704,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k/token:31566704
+usdc,arb,USD Coin,eip155:42161,,eip155:42161/
+usdc,avaxc,USD Coin,avax:8aDU0Kqh-5d23op-B-r-4YbQFRbsgF9a,,avax:8aDU0Kqh-5d23op-B-r-4YbQFRbsgF9a/
+usdc,base,USD Coin,eip155:8453,,eip155:8453/
+usdc,celo,USD Coin,eip155:42220,,eip155:42220/
+usdc,eth,USD Coin,eip155:1,erc20:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48,eip155:1/erc20:0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48
+usdc,near,USD Coin,,,
+usdc,op,USD Coin,eip155:10,,eip155:10/
+usdc,poly,USD Coin,eip155:137,erc20:0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359,eip155:137/erc20:0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359
+usdc,sol,USD Coin,solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp,token:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v,solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp/token:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+usdc,xlm,USD Coin,stellar:pubnet,,stellar:pubnet/
+usdc,zksync,USD Coin,eip155:324,,eip155:324/
+usdc,trx,USD Coin,,trc20:TEkxiTehnzSmSe2XqrBj4w32RUN966rdz8,/trc20:TEkxiTehnzSmSe2XqrBj4w32RUN966rdz8
+usdt,algo,Tether,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k,token:312769,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k/token:312769
+usdt,celo,Tether,eip155:42220,,eip155:42220/
+usdt,eth,Tether,eip155:1,erc20:0xdAC17F958D2ee523a2206206994597C13D831ec7,eip155:1/erc20:0xdAC17F958D2ee523a2206206994597C13D831ec7
+usdt,ton,Tether,,,
+usdt,trx,Tether,,trc20:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t,/trc20:TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t
+usdt,poly,Tether USD,eip155:137,erc20:0xc2132d05d31c914a87c6611c10748aeb04b58e8f,eip155:137/erc20:0xc2132d05d31c914a87c6611c10748aeb04b58e8f
+usdt,sol,Tether,solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp,token:Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB,solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp/token:Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB
+vet,vet,VeChain Token,vechain:b1ac3413d346d43539627e6be7ec1b4a,slip44:818,vechain:b1ac3413d346d43539627e6be7ec1b4a/slip44:818
+waves,waves,Waves,waves:087,slip44:5741564,waves:087/slip44:5741564
+wax,wax,Worldwide Asset Exchange,antelope:1064487b3cd1a897ce03ae5b6a865651,slip44:14001,antelope:1064487b3cd1a897ce03ae5b6a865651/slip44:14001
+wbtc,poly,Wrapped BTC,eip155:137,erc20:0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6,eip155:137/erc20:0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6
+wbtc,eth,wBTC,eip155:1,erc20:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599,eip155:1/erc20:0x2260fac5e5542a773aa44fbcfedf7c193bc2c599
+weth,poly,Wrapped Ether,eip155:137,erc20:0x7ceb23fd6bc0add59e62ac25578270cff1b9f619,eip155:137/erc20:0x7ceb23fd6bc0add59e62ac25578270cff1b9f619
+weth,eth,Wrapped Ether,eip155:1,erc20:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2,eip155:1/erc20:0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+wow,wow,Wownero,monero:a3fd635dd5cb55700317783469ba749b,slip44:417,monero:a3fd635dd5cb55700317783469ba749b/slip44:417
+wtrx,trx,Wrapped TRX,,trc20:TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR,/trc20:TNUC9Qb1rRpS5CbWLmNMxXBjyFoydXjWFR
+xdai,xdai,xDai,eip155:100,slip44:700,eip155:100/slip44:700
+xem,xem,NEM,,slip44:43,/slip44:43
+xhv,xhv,Haven Protocol,monero:4b49042122496cc7e94d392b29bd12eb,slip44:535,monero:4b49042122496cc7e94d392b29bd12eb/slip44:535
+xlm,xlm,Stellar Lumens,stellar:pubnet,slip44:148,stellar:pubnet/slip44:148
+xmr,xmr,Monero,monero:418015bb9ae982a1975da7d79277c270,slip44:128,monero:418015bb9ae982a1975da7d79277c270/slip44:128
+xno,xno,Nano,,slip44:165,/slip44:165
+xrp,xrp,XRP,xrpl:0,slip44:144,xrpl:0/slip44:144
+xvg,xvg,Verge Currency,,slip44:77,/slip44:77
+zec,zec,Zcash,bip122:00040fe8ec8471911baa1db1266ea15d,slip44:133,bip122:00040fe8ec8471911baa1db1266ea15d/slip44:133
+zen,zen,Zencash,,slip44:121,/slip44:121
+,,,,,

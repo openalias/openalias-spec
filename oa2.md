@@ -68,8 +68,6 @@ OA1 used CRC32; OA2 uses Adler-32.
 
 > checksum = adler32(concatenate(all_fields_except_checksum))
 
-***Question (primarily for fluffypony): Why use Adler-32?***
-
 ### `_openalias-payment`
 
 `_openalias-payment` is the core TXT record name for communicating payment information.
@@ -117,8 +115,6 @@ Including a checksum is optional.
 OA1 used CRC32; OA2 uses Adler-32.
 
 > checksum = adler32(concatenate(all_fields_except_checksum))
-
-***Question (primarily for fluffypony): Why use Adler-32?***
 
 ### `_openalias-routing`
 
@@ -183,21 +179,25 @@ We will use the example OpenAlias `example@openalias.org` with the following rec
 
 ### _openalias-payment.example
 
-> oa2 btc/btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v;
-> oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H;
-> oa2 xmr address=888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H;
-> oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
-> oa2 poly address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
-> oa2 base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
-> oa2 base/usdc address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
-> oa2 eth/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984 address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+```
+oa2 btc/btc address=bip352/sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v;
+oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H;
+oa2 xmr address=888tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H;
+oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+oa2 poly address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+oa2 base address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+oa2 base/usdc address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+oa2 eth/0x1f9840a85d5af5bf1d1762f925bdaddc4201f984 address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97;
+```
 
 ### _openalias-routing.example
 
-> oa2 base/usdc 10
-> oa2 eth 20
-> oa2 poly 30
-> oa2 base 40
+```
+oa2 base/usdc 10
+oa2 eth 20
+oa2 poly 30
+oa2 base 40
+```
 
 ### _openalias-metadata.example
 
@@ -231,7 +231,7 @@ We will use the example OpenAlias `example@openalias.org` with the following rec
 
 * If the user is sending USDT and the wallet supports the ETH and POLY networks, then the final used payment record should be `oa2 eth address=0x4838B106FCe9647Bdf1E7877BF73cE8B0BAD5f97`
 
-* If the user is sending BTC and the wallet supports sending to bip352 addresses, then the final used payment record should be `oa2 btc/btc address=bip352:sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v` or a user selection for the two `btc` records.
+* If the user is sending BTC and the wallet supports sending to bip352 addresses, then the final used payment record should be `oa2 btc/btc address=bip352/sp1qqfk0ag4gmq87agdy8lawrlt2mf3p8myhkuxgp5s7kdck4ywwg7mjjqc2wmmtfddvevmjnlv4klmgsx4g79rr998d20r5vmxera5f2a54nu5h496v` or a user selection for the two `btc` records.
 
 * If the user is sending BTC and the wallet does NOt support sending to bip352 addresses, then the final used payment record should be `oa2 btc address=1KTexdemPdxSBcG55heUuTjDRYqbC5ZL8H`
 

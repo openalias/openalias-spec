@@ -1,0 +1,16 @@
+OpenAlias network,OpenAlias address_type,Description,Specification
+btc,p2pkh,Pay to Public Key Hash (legacy),
+btc,p2sh,Pay to Script Hash,BIP 13
+btc,p2wpkh,Pay to Witness Public Key Hash (native SegWit v0),BIP 141
+btc,p2wsh,Pay to Witness Script Hash (native SegWit v0),BIP 141
+btc,p2tr,Pay to Taproot (SegWit v1),BIP 341
+btc,bip352,Silent Payments,BIP 352
+btc,bip47,Reusable Payment Codes (PayNym),BIP 47
+ltc,p2pkh,Pay to Public Key Hash (legacy),
+ltc,p2sh,Pay to Script Hash,BIP 13
+ltc,p2wpkh,Pay to Witness Public Key Hash (native SegWit v0),BIP 141
+ltc,p2tr,Pay to Taproot (SegWit v1),BIP 341
+ltc,mweb,MimbleWimble Extension Blocks address,
+xmr,standard,Standard address,
+xmr,integrated,Integrated address (includes payment ID),
+xmr,subaddress,Subaddress,

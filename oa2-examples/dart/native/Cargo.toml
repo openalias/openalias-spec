@@ -1,0 +1,18 @@
+[package]
+name = "openalias_native"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+# Native helper for the Dart example: resolve DNS TXT records with local DNSSEC
+# validation (like Skylight Wallet), exposed over a tiny C FFI. Pure Dart has no
+# practical local DNSSEC validator, so — as Skylight does — that job is done here
+# in Rust (hickory) and called from Dart via dart:ffi.
+
+[lib]
+name = "openalias_native"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+hickory-resolver = { version = "0.25", features = ["dnssec-ring"] }
+tokio = { version = "1", features = ["rt"] }

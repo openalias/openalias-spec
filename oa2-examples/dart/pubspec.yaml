@@ -1,0 +1,11 @@
+name: openalias_example
+description: OpenAlias v2 resolution example in Dart (with a Rust native helper for DNSSEC).
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+# Only the `ffi` package (for calling the native DNSSEC helper). Everything else
+# uses the Dart SDK. The native helper is built separately with Cargo.
+dependencies:
+  ffi: ^2.1.0

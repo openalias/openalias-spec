@@ -1,0 +1,3 @@
+# Dart pub artifacts (created by `dart pub get`)
+.dart_tool/
+pubspec.lock

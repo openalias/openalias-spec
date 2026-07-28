@@ -1,0 +1,83 @@
+OpenAlias network,Network Common Name,Network Native asset,CAIP-2 Prefix
+ada,Cardano,ada,
+aleo,Aleo Network,aleo,aleo:0
+algo,Algorand,algo,algorand:wGHE2Pwdvd7S12BL5FaOP20EGYesN73k
+aptos,Aptos,aptos,
+arb,Arbitrum One,eth,eip155:42161
+arbn,Arbitrum Nova,eth,eip155:42170
+ark,ARK,ark,
+arweave,Arweave,arweave,arweave:7wIU
+avaxc,Avalanche C-Chain,avax,avax:8aDU0Kqh-5d23op-B-r-4YbQFRbsgF9a
+avaxp,Avalanche P-Chain,avax,avax:Rr9hnPVPxuUvrdCul-vjEsU1zmqKqRDo
+avaxx,Avalanche X-Chain,avax,avax:imji8papUf2EhV3le337w1vgFauqkJg-
+ban,Banano,ban,
+base,Base,eth,eip155:8453
+bch,Bitcoin Cash,bch,bip122:000000000000000000651ef99cb9fcbe
+bsc,BNB Smart Chain,bnb,eip155:56
+bsq,bisq Token,bsq,
+bsv,BitcoinSV,bsv,
+btc,Bitcoin,btc,bip122:000000000019d6689c085ae165831e93
+casper,Casper,casper,casper:casper
+ccd,Concordium,ccd,ccd:9dd9ca4d19e9393877d2c44b70f89acb
+celo,Celo,celo,eip155:42220
+chia,Chia,chia,chia:ccd5bb71183532bff220ba46c268991a
+dash,Dash,dash,bip122:00000ffd590b1485b3caadc19b22e637
+dcr,Decred,dcr,
+doge,Dogecoin,doge,bip122:1a91e3dace36e2be3bf030a65679fe82
+eos,EOS,eos,antelope:aca376f206b8fc25a6ed44dbdc66547c
+ergo,Ergo,ergo,ergo:b0244dfc267baca974a4caee06120321
+etc,Ethereum Classic,etc,eip155:61
+eth,Ethereum,eth,eip155:1
+fil,Filecoin,fil,fil:f
+fio,FIO,fio,antelope:21dcae42c0182200e93f954a074011f9
+firo,Firo (Zcoin),firo,
+flow,Flow,flow,eip155:747
+grc,Gridcoin,grc,
+grin,Grin,grin,
+hedera,Hedera,hedera,hedera:mainnet
+icp,Internet Computer (DFINITY),icp,
+instar,INSTAR,instar,antelope:b042025541e25a472bffde2d62edd457
+iota,IOTA,iota,
+iron,Iron Fish,iron,
+kmd,Komodo,kmd,
+koinos,Koinos,koinos,koinos:EiBZK_GGVP0H_fXVAM3j6EAuz3-B-l3e
+libre,Libre,libre,antelope:38b1d7815474d0c60683ecbea321d723
+loop,Loopring,loop,
+ltc,Litecoin,ltc,bip122:12a765e31ffd4059bada1e25190f6e98
+mina,Mina,mina,mina:mainnet
+mvx,MultiversX,mvx,mvx:1
+near,NEAR Protocol,near,
+nmc,Namecoin,nmc,
+op,OP Mainnet (Optimism),eth,eip155:10
+ore,ORE,ore,antelope:7900eaca71d5b213d3e1e15d54d98ad2
+part,Particl,part,
+pivx,Pivx,pivx,
+polka,Polkadot,dot,polkadot:91b171bb158e2d3848fa23a9f1c25182
+poly,Polygon,poly,eip155:137
+proton,Proton,proton,antelope:384da888112027f0321850a169f737c3
+reef,Reef,reef,reef:7834781d38e4798d548e34ec947d19de
+rune,THORChain,rune,
+rvn,Ravencoin,rvn,
+sc,Sia,sc,
+scrt,Secret Network,scrt,
+sol,Solana,sol,solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp
+stacks,Stacks,stacks,stacks:1
+tezos,Tezos,tezos,tezos:NetXdQprcVkpaWU
+ton,The Open Network,ton,
+trx,Tron,trx,
+ultra,Ultra,ultra,antelope:a9c481dfbc7d9506dc7e87e9a137c931
+um,Penumbra,um,
+ux,UX,ux,antelope:8fc6dce7942189f842170de953932b1f
+vet,VeChain,vet,vechain:b1ac3413d346d43539627e6be7ec1b4a
+waves,Waves,waves,waves:087
+wax,WAX,wax,antelope:1064487b3cd1a897ce03ae5b6a865651
+wow,Wownero,wow,monero:a3fd635dd5cb55700317783469ba749b
+xdai,Gnosis,xdai,eip155:100
+xlm,Stellar,xlm,stellar:pubnet
+xmr,Monero,xmr,monero:418015bb9ae982a1975da7d79277c270
+xno,Nano,xno,
+xrp,Ripple,xrp,xrpl:0
+xvg,Verge Currency,xvg,
+zec,Zcash,zec,bip122:00040fe8ec8471911baa1db1266ea15d
+zen,Zencash,zen,
+zksync,Zksync,eth,eip155:324
